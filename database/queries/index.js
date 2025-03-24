@@ -9,7 +9,13 @@ import {
   replaceMongoIdInObject,
 } from "@/utils/data-utils";
 
-export async function getAllHotels(destination, checkin, checkout, category) {
+export async function getAllHotels(
+  destination,
+  checkin,
+  checkout,
+  category,
+  price
+) {
   const regex = new RegExp(destination, "i");
   const hotelsByDestination = await hotelModel
     .find({ city: { $regex: regex } })
@@ -24,6 +30,24 @@ export async function getAllHotels(destination, checkin, checkout, category) {
     .lean();
 
   let allHotels = hotelsByDestination;
+
+  // Filter by price if provided
+  if (price) {
+    const priceRanges = price.split("|");
+
+    allHotels = allHotels.filter((hotel) => {
+      return priceRanges.some((range) => {
+        const [minStr, maxStr] = range.split("-");
+        const min = parseInt(minStr);
+        const max = parseInt(maxStr);
+
+        const avg = (hotel.lowRate + hotel.highRate) / 2;
+
+        // Check if hotel's lowRate or highRate falls within any of the selected ranges
+        return (avg >= min && avg <= max) || (avg >= min && avg <= max);
+      });
+    });
+  }
 
   if (category) {
     const categoriesToMatch = category.split("|");
