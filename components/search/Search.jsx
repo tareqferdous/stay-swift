@@ -27,10 +27,18 @@ const Search = ({ fromList, destination, checkin, checkout }) => {
   };
 
   const handleDateChange = (key, date) => {
-    setSearchTerm({
+    const state = {
       ...searchTerm,
       [key]: format(date, "yyyy-MM-dd"),
-    });
+    };
+    if (
+      new Date(state.checkin).getTime() > new Date(state.checkout).getTime()
+    ) {
+      setAllowSearch(false);
+    } else {
+      setAllowSearch(true);
+    }
+    setSearchTerm(state);
   };
 
   const doSearch = (event) => {
