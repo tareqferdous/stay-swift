@@ -49,8 +49,6 @@ const Search = ({ fromList, destination, checkin, checkout }) => {
     }
   };
 
-  console.log(searchTerm);
-
   return (
     <>
       <div className="lg:max-h-[250px] mt-6">
@@ -63,6 +61,7 @@ const Search = ({ fromList, destination, checkin, checkout }) => {
                 defaultValue={searchTerm?.destination}
                 name="destination"
                 id="destination"
+                className="border border-gray-300 rounded p-2"
               >
                 <option value="Puglia">Puglia</option>
                 <option value="Catania">Catania</option>
@@ -73,11 +72,13 @@ const Search = ({ fromList, destination, checkin, checkout }) => {
             </h4>
           </div>
 
-          <div>
+          <div className="w-full ">
             <span>Check in</span>
             <h4 className="mt-2">
               <DatePicker
-                className="border p-2 w-full"
+                className="w-full p-2 border border-gray-300 rounded"
+                wrapperClassName="w-full"
+                placeholderText="MM/dd/yyyy"
                 selected={searchTerm?.checkin}
                 onChange={(date) => handleDateChange("checkin", date)}
               />
@@ -88,9 +89,11 @@ const Search = ({ fromList, destination, checkin, checkout }) => {
             <span>Checkout</span>
             <h4 className="mt-2">
               <DatePicker
-                value={searchTerm?.checkout}
+                className="w-full p-2 border border-gray-300 rounded"
+                wrapperClassName="w-full"
+                placeholderText="MM/dd/yyyy"
+                selected={searchTerm?.checkout}
                 onChange={(date) => handleDateChange("checkout", date)}
-                className="border p-2 w-full"
               />
             </h4>
           </div>
