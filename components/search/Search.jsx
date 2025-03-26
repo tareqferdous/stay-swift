@@ -1,7 +1,10 @@
 "use client";
 
+import { format } from "date-fns";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const Search = ({ fromList, destination, checkin, checkout }) => {
   const searchParams = useSearchParams();
@@ -16,20 +19,18 @@ const Search = ({ fromList, destination, checkin, checkout }) => {
 
   const [allowSearch, setAllowSearch] = useState(true);
 
-  const handleInputs = (event) => {
-    const state = {
+  const handleDestination = (event) => {
+    setSearchTerm({
       ...searchTerm,
-      [event.target.name]: event.target.value,
-    };
-    if (
-      new Date(state.checkin).getTime() > new Date(state.checkout).getTime()
-    ) {
-      setAllowSearch(false);
-    } else {
-      setAllowSearch(true);
-    }
+      destination: event.target.value,
+    });
+  };
 
-    setSearchTerm(state);
+  const handleDateChange = (key, date) => {
+    setSearchTerm({
+      ...searchTerm,
+      [key]: format(date, "yyyy-MM-dd"),
+    });
   };
 
   const doSearch = (event) => {
@@ -48,6 +49,8 @@ const Search = ({ fromList, destination, checkin, checkout }) => {
     }
   };
 
+  console.log(searchTerm);
+
   return (
     <>
       <div className="lg:max-h-[250px] mt-6">
@@ -56,7 +59,7 @@ const Search = ({ fromList, destination, checkin, checkout }) => {
             <span>Destination</span>
             <h4 className="mt-2">
               <select
-                onChange={handleInputs}
+                onChange={handleDestination}
                 defaultValue={searchTerm?.destination}
                 name="destination"
                 id="destination"
@@ -73,12 +76,10 @@ const Search = ({ fromList, destination, checkin, checkout }) => {
           <div>
             <span>Check in</span>
             <h4 className="mt-2">
-              <input
-                onChange={handleInputs}
-                value={searchTerm?.checkin}
-                type="date"
-                name="checkin"
-                id="checkin"
+              <DatePicker
+                className="border p-2 w-full"
+                selected={searchTerm?.checkin}
+                onChange={(date) => handleDateChange("checkin", date)}
               />
             </h4>
           </div>
@@ -86,12 +87,10 @@ const Search = ({ fromList, destination, checkin, checkout }) => {
           <div>
             <span>Checkout</span>
             <h4 className="mt-2">
-              <input
-                onChange={handleInputs}
+              <DatePicker
                 value={searchTerm?.checkout}
-                type="date"
-                name="checkout"
-                id="checkout"
+                onChange={(date) => handleDateChange("checkout", date)}
+                className="border p-2 w-full"
               />
             </h4>
           </div>
