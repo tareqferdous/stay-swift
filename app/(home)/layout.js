@@ -1,4 +1,4 @@
-import Navbar from "@/components/Navbar";
+import ResponsiveNav from "@/components/common/ResponsiveNav";
 import { dbConnect } from "@/service/mongo";
 import { Inter } from "next/font/google";
 import "../globals.css";
@@ -15,7 +15,7 @@ export default async function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Navbar sideMenu={true} />
+        <ResponsiveNav />
         <main>{children}</main>
       </body>
     </html>
