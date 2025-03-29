@@ -19,31 +19,25 @@ const Navbar = ({ handleShowNav }) => {
         <div className="hidden lg:flex items-center space-x-10">
           <Link href="">
             <p className="relative text-white text-base font-medium w-fit block after:block after:absolute after:h-[3px] after:bg-yellow-300 after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition duration-300 after:origin-right">
-              Home
+              Recommended Places
             </p>
           </Link>
 
           <Link href="">
             <p className="relative text-white text-base font-medium w-fit block after:block after:absolute after:h-[3px] after:bg-yellow-300 after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition duration-300 after:origin-right">
-              Home
+              About Us
             </p>
           </Link>
 
           <Link href="">
             <p className="relative text-white text-base font-medium w-fit block after:block after:absolute after:h-[3px] after:bg-yellow-300 after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition duration-300 after:origin-right">
-              Home
+              Contact Us
             </p>
           </Link>
 
           <Link href="">
             <p className="relative text-white text-base font-medium w-fit block after:block after:absolute after:h-[3px] after:bg-yellow-300 after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition duration-300 after:origin-right">
-              Home
-            </p>
-          </Link>
-
-          <Link href="">
-            <p className="relative text-white text-base font-medium w-fit block after:block after:absolute after:h-[3px] after:bg-yellow-300 after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition duration-300 after:origin-right">
-              Home
+              Bookings
             </p>
           </Link>
         </div>
