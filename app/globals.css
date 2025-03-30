@@ -32,11 +32,11 @@
   }
 
   .search-btn {
-    @apply bg-primary px-8 py-3 rounded-md block mx-auto text-white font-bold -translate-y-1/2 shadow-lg hover:shadow-primary/50 active:scale-95 transition-all;
+    @apply bg-rose-600 hover:bg-rose-700 px-8 py-3 rounded-md block mx-auto text-white font-bold -translate-y-1/2 shadow-lg  active:scale-95 transition-all;
   }
 
   .btn-primary {
-    @apply bg-primary px-8 py-2 rounded-md block text-white font-bold shadow-lg hover:shadow-primary/50 active:scale-95 transition-all;
+    @apply bg-amber-500 px-8 py-2 rounded-md block text-white font-bold shadow-lg hover:bg-rose-700 active:scale-95 transition-all;
   }
 
   .btn-disabled {

@@ -15,18 +15,31 @@ const HotelListPage = ({
 }) => {
   return (
     <>
-      <section className="bg-[url('/hero-bg.jpg')] bg-cover bg-no-repeat bg-center pt-[100px] pb-[60px]">
-        <div className="container items-center py-12 ">
-          <Search
-            fromList={true}
-            destination={destination}
-            checkin={checkin}
-            checkout={checkout}
-          />
+      <section className="relative w-full h-[120vh] sm:h-[65vh]">
+        {/* overlay */}
+        <div className="absolute top-0 left-0 w-full h-full bg-gray-800 opacity-70"></div>
+        <video
+          src="/hero1.mp4"
+          autoPlay
+          muted
+          loop
+          preload="metadata"
+          className="w-full h-full object-cover"
+        />
+        <div className="container absolute z-[100] w-full top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
+          <div className="container items-center py-12 ">
+            <Search
+              fromList={true}
+              destination={destination}
+              checkin={checkin}
+              checkout={checkout}
+            />
+          </div>
         </div>
       </section>
+
       <section className="py-12">
-        <div className="container grid grid-cols-12">
+        <div className="container grid grid-cols-12 gap-4">
           <Filter />
           <HotelList
             destination={destination}
