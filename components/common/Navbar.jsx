@@ -1,10 +1,28 @@
+"use client";
+
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import { HiBars3BottomLeft } from "react-icons/hi2";
 import { TbAirBalloon } from "react-icons/tb";
 
 const Navbar = ({ handleShowNav }) => {
+  const [navBg, setNavBg] = useState(false);
+
+  useEffect(() => {
+    const handler = () => {
+      if (window.scrollY >= 90) setNavBg(true);
+      if (window.scrollY < 90) setNavBg(false);
+    };
+    window.addEventListener("scroll", handler);
+    return () => window.removeEventListener("scroll", handler);
+  }, []);
+
   return (
-    <div className="transition-all duration-200 h-[12vh] z-[1000] fixed w-full">
+    <div
+      className={` transition-all duration-200 h-[12vh] z-[1000] w-full fixed ${
+        navBg ? "bg-white shadow-md" : "fixed"
+      }`}
+    >
       <div className="flex items-center justify-between h-full w-[90%] xl:w-[80%] mx-auto">
         {/* Logo */}
         <Link href="/" className="flex items-center space-x-2">
@@ -16,27 +34,31 @@ const Navbar = ({ handleShowNav }) => {
           </h1>
         </Link>
         {/* NavLinks */}
-        <div className="hidden lg:flex items-center space-x-10">
+        <div
+          className={`hidden lg:flex items-center space-x-10 ${
+            navBg ? "text-gray-800" : "text-white"
+          }`}
+        >
           <Link href="">
-            <p className="relative text-white text-base font-medium w-fit block after:block after:absolute after:h-[3px] after:bg-yellow-300 after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition duration-300 after:origin-right">
+            <p className="relative  text-base font-medium w-fit block after:block after:absolute after:h-[3px] after:bg-yellow-300 after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition duration-300 after:origin-right">
               Recommended Places
             </p>
           </Link>
 
           <Link href="">
-            <p className="relative text-white text-base font-medium w-fit block after:block after:absolute after:h-[3px] after:bg-yellow-300 after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition duration-300 after:origin-right">
+            <p className="relative  text-base font-medium w-fit block after:block after:absolute after:h-[3px] after:bg-yellow-300 after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition duration-300 after:origin-right">
               About Us
             </p>
           </Link>
 
           <Link href="">
-            <p className="relative text-white text-base font-medium w-fit block after:block after:absolute after:h-[3px] after:bg-yellow-300 after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition duration-300 after:origin-right">
+            <p className="relative  text-base font-medium w-fit block after:block after:absolute after:h-[3px] after:bg-yellow-300 after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition duration-300 after:origin-right">
               Contact Us
             </p>
           </Link>
 
           <Link href="">
-            <p className="relative text-white text-base font-medium w-fit block after:block after:absolute after:h-[3px] after:bg-yellow-300 after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition duration-300 after:origin-right">
+            <p className="relative  text-base font-medium w-fit block after:block after:absolute after:h-[3px] after:bg-yellow-300 after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition duration-300 after:origin-right">
               Bookings
             </p>
           </Link>
