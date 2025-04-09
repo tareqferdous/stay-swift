@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { IoMdArrowDropright } from "react-icons/io";
 import HotelRating from "./HotelRating";
 import HotelReviewNumber from "./HotelReviewNumber";
 
@@ -22,7 +23,8 @@ const HotelSummaryInfo = ({ fromListPage, info, checkin, checkout }) => {
           {info?.isBooked && <span>Sold Out</span>}
         </div>
         <div>
-          <span className="bg-yellow-300 p-1 rounded-md">
+          {console.log(info?.propertyCategory)}
+          <span className="bg-[#FFA500] p-1 rounded-md text-white font-semibold text-sm">
             {info?.propertyCategory} Star Property
           </span>
         </div>
@@ -32,10 +34,13 @@ const HotelSummaryInfo = ({ fromListPage, info, checkin, checkout }) => {
         <h2 className="text-2xl font-bold text-right">
           ${(info?.highRate + info?.lowRate) / 2}/night
         </h2>
-        <p className=" text-right">Per Night for 1 Room</p>
+        <small className=" text-right">Per Night for 1 Room</small>
         {fromListPage ? (
-          <Link href={`/hotels/${info?.id}${params}`} className="btn-primary ">
-            Details
+          <Link href={`/hotels/${info?.id}${params}`} className="btn-primary">
+            <button className="flex items-center ">
+              <span>See Details</span>
+              <IoMdArrowDropright className="w-5 h-5" />
+            </button>
           </Link>
         ) : (
           <Link

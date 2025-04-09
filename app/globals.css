@@ -36,7 +36,7 @@
   }
 
   .btn-primary {
-    @apply bg-amber-500 px-8 py-2 rounded-md block text-white font-bold shadow-lg hover:bg-rose-700 active:scale-95 transition-all;
+    @apply bg-transparent hover:bg-rose-500 text-rose-700 px-6 py-2 rounded-md block  hover:text-white border border-rose-600 hover:border-transparent font-bold shadow-lg  active:scale-95 transition-all;
   }
 
   .btn-disabled {
