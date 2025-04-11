@@ -1,17 +1,8 @@
 import HotelList from "@/components/hotel/HotelList";
+import Loader from "@/components/loading/Loader";
 import Filter from "@/components/search/filter/Filter";
 import Search from "@/components/search/Search";
 import { Suspense } from "react";
-
-export function Loading() {
-  return (
-    <div className="flex flex-col items-center justify-center w-screen h-screen bg-white">
-      <p className="text-xl font-semibold text-gray-700 animate-pulse">
-        Getting hotels...
-      </p>
-    </div>
-  );
-}
 
 const refineCategory = (category) => {
   const decodedCategory = decodeURI(category);
@@ -26,7 +17,7 @@ const HotelListPage = ({
 }) => {
   return (
     <>
-      <Suspense fallback={<Loading />}>
+      <Suspense fallback={<Loader />}>
         <section className="relative w-full h-[120vh] sm:h-[65vh]">
           {/* overlay */}
           <div className="absolute top-0 left-0 w-full h-full bg-gray-800 opacity-70"></div>
