@@ -1,12 +1,15 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { HiBars3BottomLeft } from "react-icons/hi2";
 import { TbAirBalloon } from "react-icons/tb";
 
 const Navbar = ({ handleShowNav }) => {
   const [navBg, setNavBg] = useState(false);
+  const pathname = usePathname();
+  const isHomeOrHotels = pathname === "/" || pathname === "/hotels";
 
   useEffect(() => {
     const handler = () => {
@@ -19,7 +22,7 @@ const Navbar = ({ handleShowNav }) => {
 
   return (
     <div
-      className={` transition-all duration-200 h-[12vh] z-[1000] w-full fixed ${
+      className={` transition-all duration-200 h-[12vh] z-[1000] w-full fixed top-0 left-0 right-0 ${
         navBg ? "bg-white shadow-md" : "fixed"
       }`}
     >
@@ -36,7 +39,7 @@ const Navbar = ({ handleShowNav }) => {
         {/* NavLinks */}
         <div
           className={`hidden lg:flex items-center space-x-10 ${
-            navBg ? "text-gray-800" : "text-white"
+            navBg || !isHomeOrHotels ? "text-gray-800" : "text-white"
           }`}
         >
           <Link href="">
