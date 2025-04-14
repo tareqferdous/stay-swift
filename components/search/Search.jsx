@@ -10,11 +10,13 @@ const Search = ({ fromList, destination, checkin, checkout }) => {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();
+  const twoDaysLater = new Date();
+  twoDaysLater.setDate(twoDaysLater.getDate() + 2);
 
   const [searchTerm, setSearchTerm] = useState({
     destination: destination || "Puglia",
     checkin: checkin || new Date(),
-    checkout: checkout,
+    checkout: checkout || twoDaysLater,
   });
 
   const [allowSearch, setAllowSearch] = useState(true);
