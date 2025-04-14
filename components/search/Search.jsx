@@ -13,7 +13,7 @@ const Search = ({ fromList, destination, checkin, checkout }) => {
 
   const [searchTerm, setSearchTerm] = useState({
     destination: destination || "Puglia",
-    checkin: checkin,
+    checkin: checkin || new Date(),
     checkout: checkout,
   });
 
@@ -88,6 +88,7 @@ const Search = ({ fromList, destination, checkin, checkout }) => {
                 wrapperClassName="w-full"
                 placeholderText="MM/dd/yyyy"
                 selected={searchTerm?.checkin}
+                minDate={new Date()}
                 onChange={(date) => handleDateChange("checkin", date)}
               />
             </h4>
@@ -101,6 +102,7 @@ const Search = ({ fromList, destination, checkin, checkout }) => {
                 wrapperClassName="w-full"
                 placeholderText="MM/dd/yyyy"
                 selected={searchTerm?.checkout}
+                minDate={searchTerm?.checkin || new Date()}
                 onChange={(date) => handleDateChange("checkout", date)}
               />
             </h4>

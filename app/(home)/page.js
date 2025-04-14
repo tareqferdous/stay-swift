@@ -1,4 +1,5 @@
 import Search from "@/components/search/Search";
+import { Suspense } from "react";
 
 export default function Home() {
   return (
@@ -24,7 +25,9 @@ export default function Home() {
             We have 459 rooms spread throuout Indonesia with room standards
             equivalent to 5 star hotels.
           </p>
-          <Search />
+          <Suspense fallback={<h1>Loading..</h1>}>
+            <Search />
+          </Suspense>
         </div>
       </div>
     </section>
