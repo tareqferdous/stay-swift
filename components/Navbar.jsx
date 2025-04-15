@@ -1,19 +1,17 @@
 import { auth } from "@/auth";
-import Image from "next/image";
 import Link from "next/link";
+import { TbAirBalloon } from "react-icons/tb";
 import Logout from "./auth/Logout";
 
 const Navbar = async ({ sideMenu }) => {
   const session = await auth();
   return (
     <nav>
-      <Link href="/">
-        <Image
-          src="/stayswift.svg"
-          alt="Stay Swift Logo"
-          width={200}
-          height={200}
-        />
+      <Link href="/" className="flex items-center space-x-2">
+        <div className="w-10 h-10 bg-rose-500 rounded-full flex items-center justify-center flex-col">
+          <TbAirBalloon className="w-6 h-6 text-white" />
+        </div>
+        <h1 className="text-xl md:text-2xl uppercase font-bold">Tripi</h1>
       </Link>
 
       {sideMenu && (
