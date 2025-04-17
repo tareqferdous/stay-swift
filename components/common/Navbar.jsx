@@ -1,5 +1,6 @@
 "use client";
 
+import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -8,6 +9,7 @@ import { HiBars3BottomLeft } from "react-icons/hi2";
 
 const Navbar = ({ handleShowNav }) => {
   const [navBg, setNavBg] = useState(false);
+  const { data: session, status } = useSession();
   const pathname = usePathname();
   const isHomeOrHotels = pathname === "/" || pathname === "/hotels";
 
@@ -38,7 +40,7 @@ const Navbar = ({ handleShowNav }) => {
                 navBg || !isHomeOrHotels
                   ? "bg-gradient-to-r from-black via-black to-rose-600"
                   : "bg-gradient-to-r from-white via-white to-rose-600"
-              } text-2xl font-semibold tracking-tight bg-clip-text text-transparent `}
+              } text-lg md:text-2xl font-semibold tracking-tight bg-clip-text text-transparent `}
             >
               Stay Swift
             </h1>
@@ -78,12 +80,17 @@ const Navbar = ({ handleShowNav }) => {
 
         {/* buttons */}
         <div className="flex items-center space-x-4">
-          <Link
-            href="/login"
-            className="md:px-12 md:py-2.5 px-5 py-2 text-white font-semibold text-base bg-rose-600 hover:bg-rose-700 transition-all duration-200 rounded-lg"
-          >
-            Login
-          </Link>
+          {session?.user ? (
+            <button onClick={() => signOut()}>Sign Out</button>
+          ) : (
+            <Link
+              href="/login"
+              className="hidden md:block md:px-10 md:py-2.5 px-5 py-2 text-white font-semibold text-base bg-rose-600 hover:bg-rose-700 transition-all duration-200 rounded-lg"
+            >
+              Login
+            </Link>
+          )}
+
           {/* Burger Menu */}
           <HiBars3BottomLeft
             onClick={handleShowNav}

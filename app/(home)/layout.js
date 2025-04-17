@@ -1,4 +1,5 @@
 import ResponsiveNav from "@/components/common/ResponsiveNav";
+import AuthProvider from "@/providers/AuthProvider";
 import { dbConnect } from "@/service/mongo";
 import { Inter } from "next/font/google";
 import "../globals.css";
@@ -15,8 +16,10 @@ export default async function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <ResponsiveNav />
-        <main>{children}</main>
+        <AuthProvider>
+          <ResponsiveNav />
+          <main>{children}</main>
+        </AuthProvider>
       </body>
     </html>
   );

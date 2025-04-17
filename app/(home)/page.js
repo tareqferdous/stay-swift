@@ -15,13 +15,13 @@ export default function Home() {
         className="w-full h-full object-cover"
       />
       <div className="container absolute z-[100] w-full top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
-        <div className="col-span-7">
-          <h1 className="text-[25px] mb-4 md:mb-0 text-center md:text-[35px] lg:text-[45px] tracking-[0.2rem] text-white font-bold uppercase">
+        <div className="col-span-7 mt-7 md:mt-0">
+          <h1 className="text-[25px] mb-4 md:mb-0 text-center md:text-[35px] lg:text-[45px] tracking-wide md:tracking-[0.2rem] text-white font-bold uppercase">
             Hotel for memorable moments <br />
             rich in emotions
           </h1>
 
-          <p className="my-2 text-gray-200 text-center">
+          <p className="my-2 text-gray-200 text-center text-sm sm:text-base">
             We have 459 rooms spread throuout Indonesia with room standards
             equivalent to 5 star hotels.
           </p>
