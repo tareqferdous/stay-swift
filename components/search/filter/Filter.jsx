@@ -1,7 +1,4 @@
-import SortHotel from "@/components/sort/SortHotel";
 import { FaFilter } from "react-icons/fa";
-import FilterByAmenities from "./FilterByAmenities";
-import FilterByPriceRange from "./FilterByPriceRange";
 import FilterByStarCategory from "./FilterByStarCategory";
 
 const Filter = () => {
@@ -13,10 +10,10 @@ const Filter = () => {
           <span className="font-bold text-xl">Filter</span>
         </div>
         <div className="pt-0 px-5 pb-5">
-          <SortHotel />
-          <FilterByPriceRange />
+          {/* <SortHotel />
+          <FilterByPriceRange /> */}
           <FilterByStarCategory />
-          <FilterByAmenities />
+          {/* <FilterByAmenities /> */}
         </div>
       </div>
     </>
